@@ -1,4 +1,4 @@
-require('packer_config')
+require('nvim.packer_config')
 
 -- ctrl/option backspace clear full words in insert mode
 -- find out how to move from comment line to no comment line (i.e. without auto comment)
@@ -9,8 +9,9 @@ require('packer_config')
 -- display gitignored files in the file tree
 -- tabs for open files
 -- status line
--- whichkey.nvim
+-- whichkey.nvim config
 -- don't comment empty line
+-- ctrl+k in nvim tree command clash
 
 local set_keymap = vim.keymap.set
 local opt = vim.opt
@@ -182,6 +183,7 @@ set_keymap('n', '<C-n>', api.tree.toggle)
 local builtin = require('telescope.builtin')
 
 set_keymap('n', '<leader>f', builtin.find_files, {})
+set_keymap('n', '<C-p>', builtin.git_files, {})
 
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or 'all' (the five listed parsers should always be installed)
