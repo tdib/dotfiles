@@ -86,14 +86,17 @@ set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
 -- Allow movement between buffers using tab/shift-tab
-set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true })
-set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true })
-set_keymap('n', '<A-l>', ':bnext<CR>', { noremap = true, silent = true })
-set_keymap('n', '<A-h>', ':bprev<CR>', { noremap = true, silent = true })
+-- set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true })
+-- set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true })
+set_keymap('n', '<A-l>', ':BufferNext<CR>', { noremap = true, silent = true })
+set_keymap('n', '<A-h>', ':BufferPrev<CR>', { noremap = true, silent = true })
 
 -- Disable highlighting w/ esc
 set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 
+
+
+-- Visible whitespace
 vim.cmd('set list')
 vim.cmd('set listchars=tab:»\\ ')
 vim.cmd('set listchars+=space:·')
@@ -136,7 +139,7 @@ lsp.on_attach(function(_, bufnr)
 
     set_keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
     set_keymap("n", "K", function() vim.lsp.buf.hover() end, opts)
-    set_keymap("n", "<C-K>", function() vim.lsp.buf.signature_help() end, opts)
+    set_keymap("n", "<C-Shift-K>", function() vim.lsp.buf.signature_help() end, opts)
     -- set_keymap("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     -- set_keymap("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
     set_keymap("n", "[d", function() vim.diagnostic.goto_next() end, opts)
@@ -295,7 +298,10 @@ local function on_attach(bufnr)
     end, opts('Print Node Path'))
 end
 require('nvim-tree').setup({
-    on_attach = on_attach
+    on_attach = on_attach,
+    git = {
+        ignore = false
+    }
 })
 
 -- local api = require('nvim-tree.api')
