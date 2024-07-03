@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+yabai -m config layout bsp
+
+# Do not manage any windows by default
+yabai -m rule --add app=".*" manage=off
+
+
