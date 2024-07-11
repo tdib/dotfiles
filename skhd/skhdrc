@@ -5,11 +5,12 @@ shift + alt - s : yabai -m window --resize bottom:0:20
 shift + alt - w : yabai -m window --resize bottom:0:-20
 shift + alt - d : yabai -m window --resize right:20:0
 
-# Shift focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+# Shift focus between windows - if a window cannot be found in a
+# given direction, try to find a screen in that direction
+alt - h : yabai -m window --focus west || yabai -m display --focus west
+alt - j : yabai -m window --focus south || yabai -m display --focus south
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 # Quick apps
 shift + alt - return : open -a "iTerm"
@@ -17,14 +18,15 @@ shift + alt - 1 : open -a "Arc"
 shift + alt - 2 : open -a "Discord"
 shift + alt - 3 : open -a "Spotify"
 shift + alt - 4 : open -a "Visual Studio Code"
-# shift + alt - 5 : open -a ""
-# shift + alt - 6 : open -a ""
-# shift + alt - 7 : open -a ""
-# shift + alt - 8 : open -a ""
-# shift + alt - 9 : open -a ""
-# shift + alt - 0 : open -a ""
+shift + alt - 5 : open -a ""
+shift + alt - 6 : open -a ""
+shift + alt - 7 : open -a ""
+shift + alt - 8 : open -a ""
+shift + alt - 9 : open -a ""
+shift + alt - 0 : open -a "Finder"
 
 # Toggle window fullscreen zoom
+# TODO: find out if it's possible to take it out of the bsp flow but keep it managed by yabai
 shift + alt - f : yabai -m window --toggle zoom-fullscreen
 
 # Toggle the current window's management by Yabai
@@ -34,20 +36,38 @@ shift + alt - c : yabai -m window --toggle float --grid 4:4:1:1:2:2 # (window is
 # Hide window
 shift + alt - m : yabai -m window --minimize
 
-# Swap window
-# TODO: use --warp instead of --swap?
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+# Swap windows - if there is no window to swap with, try to move it to a different screen
+shift + alt - h : yabai -m window --swap west || ~/.config/skhd/scripts/move-to-screen.sh --west
+shift + alt - j : yabai -m window --swap south || ~/.config/skhd/scripts/move-to-screen.sh --south
+shift + alt - k : yabai -m window --swap north || ~/.config/skhd/scripts/move-to-screen.sh --north
+shift + alt - l : yabai -m window --swap east || ~/.config/skhd/scripts/move-to-screen.sh --east
 
-# Focus display?
-ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
-ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
-ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
+# Move window to screen and follow
+ctrl + alt - h : ~/.config/skhd/scripts/move-to-screen.sh --west
+ctrl + alt - j : ~/.config/skhd/scripts/move-to-screen.sh --south
+ctrl + alt - k : ~/.config/skhd/scripts/move-to-screen.sh --north
+ctrl + alt - l : ~/.config/skhd/scripts/move-to-screen.sh --east
 
-# Toggle window split type?
-shift + alt - z : yabai -m window --toggle split
+# TODO: move window to screen (without following)
+
+# Move window to space/desktop and follow
+# TODO: investigate using osascript to switch instead
+ctrl + alt - 1 : ~/.config/skhd/scripts/move-to-space.sh 1
+ctrl + alt - 2 : ~/.config/skhd/scripts/move-to-space.sh 2
+ctrl + alt - 3 : ~/.config/skhd/scripts/move-to-space.sh 3
+ctrl + alt - 4 : ~/.config/skhd/scripts/move-to-space.sh 4
+ctrl + alt - 5 : ~/.config/skhd/scripts/move-to-space.sh 5
+ctrl + alt - 6 : ~/.config/skhd/scripts/move-to-space.sh 6
+ctrl + alt - 7 : ~/.config/skhd/scripts/move-to-space.sh 7
+ctrl + alt - 8 : ~/.config/skhd/scripts/move-to-space.sh 8
+ctrl + alt - 9 : ~/.config/skhd/scripts/move-to-space.sh 9
+ctrl + alt - 0 : ~/.config/skhd/scripts/move-to-space.sh 0
+
+# Focus display
+ctrl + cmd - h : yabai -m display --focus west
+ctrl + cmd - j : yabai -m display --focus south
+ctrl + cmd - k : yabai -m display --focus north
+ctrl + cmd - l : yabai -m display --focus east
 
 # Rotate tree 90
 shift + alt - r : yabai -m space --rotate 270
@@ -57,3 +77,8 @@ shift + alt - e : yabai -m space --rotate 90
 shift + alt - y : yabai -m space --mirror y-axis
 # Mirror tree x-axis
 shift + alt - x : yabai -m space --mirror x-axis
+# Toggle window split type
+shift + alt - z : yabai -m window --toggle split
+
+# TODO: swap two monitors windows (if possible)
+
