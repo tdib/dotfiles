@@ -45,8 +45,8 @@ setopt hist_find_no_dups
 # Aliases
 alias ls="eza $eza_params"
 alias ll="eza --all --long --header $eza_params"
-alias lt='eza --tree $eza_params'
-alias tree='eza --tree $eza_params'
+alias lt="eza --tree $eza_params"
+alias tree="eza --tree $eza_params"
 
 alias editrc="nvim $ZDOTDIR/.zshrc"
 alias sourcerc="source $ZDOTDIR/.zshrc"
@@ -60,7 +60,7 @@ alias vim="nvim"
 source "$ZDOTDIR/prompt.zsh"
 
 # Fast node manager (fnm)
-eval "$(fnm env --use-on-cd --shell zsh)"
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
 # AOC Utils
 source "$ZDOTDIR/aoc-utils.zsh"
