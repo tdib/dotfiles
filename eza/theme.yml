@@ -47,17 +47,17 @@ perms:
 
 users:
   user_you:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
   user_root:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
   user_other:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
   group_yours:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
   group_other:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
   group_root:
-    foreground: "#bfa795"
+    foreground: "#7566C8"
 
 punctuation:
   foreground: "#777777" # Grey
