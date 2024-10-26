@@ -1,0 +1,96 @@
+
+filekinds:
+  normal:
+    foreground: Purple
+  directory:
+    foreground: Blue
+  symlink:
+    foreground: Cyan
+  executable:
+    foreground: Green
+  mount_point:
+    foreground: Cyan
+
+perms:
+  user_read:
+    foreground: White
+    is_bold: false
+  user_write:
+    foreground: White
+    is_bold: false
+  user_execute_file:
+    foreground: White
+    is_bold: false
+  user_execute_other:
+    foreground: White
+    is_bold: false
+
+  group_read:
+    foreground: White
+  group_write:
+    foreground: White
+  group_execute:
+    foreground: White
+
+  other_read:
+    foreground: White
+  other_write:
+    foreground: White
+  other_execute:
+    foreground: White
+  special_user_file:
+    foreground: White
+  special_other:
+    foreground: White
+  attribute:
+    foreground: White
+
+users:
+  user_you:
+    foreground: "#bfa795"
+  user_root:
+    foreground: "#bfa795"
+  user_other:
+    foreground: "#bfa795"
+  group_yours:
+    foreground: "#bfa795"
+  group_other:
+    foreground: "#bfa795"
+  group_root:
+    foreground: "#bfa795"
+
+punctuation:
+  foreground: "#777777" # Grey
+date:
+  foreground: Blue
+inode:
+  foreground: Blue
+blocks:
+  foreground: Blue
+header:
+  foreground: White
+octal:
+  foreground: Blue
+flags:
+  foreground: Red
+
+symlink_path:
+  foreground: Cyan
+control_char:
+  foreground: White
+broken_symlink:
+  foreground: Red
+broken_path_overlay:
+  foreground: Red
+
+filenames:
+  # Just change the icon glyph
+  Cargo.toml: {icon: {glyph: 🦀}}
+  Cargo.lock: {icon: {glyph: 🦀}}
+extensions:
+  # Change the filename color and icon
+  # NOTE: not all unicode glyphs support color changes
+  rs: {filename: {foreground: Red}, icon: {glyph: 🦀}}
+  # Change the icon glyph and color
+  nix: {icon: {glyph: ❄, style: {foreground: White}}}
+
