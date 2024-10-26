@@ -65,4 +65,3 @@ command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)" # fnm
 
 # AOC Utils
 source "$ZDOTDIR/aoc-utils.zsh"
-
