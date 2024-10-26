@@ -1,6 +1,7 @@
 brew "zsh"
 brew "git"
 brew "fnm"
+brew "eza"
 brew "pnpm"
 brew "neovim"
 brew "fzf"
