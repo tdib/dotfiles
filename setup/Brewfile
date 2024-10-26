@@ -1,0 +1,11 @@
+
+brew "zsh"
+brew "git"
+brew "fnm"
+brew "pnpm"
+brew "neovim"
+brew "fzf"
+brew "zoxide"
+brew "pyenv"
+brew "koekeishiya/formulae/yabai"
+brew "koekeishiya/formulae/skhd"
