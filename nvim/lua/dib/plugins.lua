@@ -23,7 +23,7 @@ return {
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        tag = '0.1.1'
+        tag = '0.1.8'
     },
 
     {
@@ -48,14 +48,35 @@ return {
     },
 
     {
-        'folke/neodev.nvim',
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
+            },
+        },
     },
+    { "Bilal2453/luvit-meta",    lazy = true }, -- optional `vim.uv` typings
+    -- optional completion source for require statements and module annotations
+    {
+        "hrsh7th/nvim-cmp",
+        opts = function(_, opts)
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, {
+                name = "lazydev",
+                group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+            })
+        end,
+    },
+
 
     {
         'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 300
+            vim.o.timeoutlen = 1000 -- timeout for multi-key presses
             require('which-key').setup()
         end
     },
@@ -94,5 +115,5 @@ return {
         version = '^1.0.0', -- optional: only update when a new 1.x version is released
     },
     { 'akinsho/toggleterm.nvim', version = "*", config = true },
-    { 'github/copilot.vim' }
+    -- { 'github/copilot.vim' }
 }
