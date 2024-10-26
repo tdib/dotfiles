@@ -17,3 +17,4 @@ $(yabai -m window --space $screen_number)
 
 # Move to the target space
 $(yabai -m window --focus "$curr_window_id")
+

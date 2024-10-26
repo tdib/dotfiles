@@ -25,3 +25,4 @@ fi
 
 # Focus the window we just moved
 $(yabai -m window --focus "$curr_window_id")
+
