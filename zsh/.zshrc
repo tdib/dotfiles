@@ -1,17 +1,15 @@
 
 # Load and initialise completion system
 autoload -Uz compinit
-compinit
+compinit -C -d "$ZDOTDIR/.zcompdump"
 
 # Initialise Zap plugin manager
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+[ -f "$XDG_DATA_HOME/zap/zap.zsh" ] && source "$XDG_DATA_HOME/zap/zap.zsh"
 
 # Load plugins
 plug "Aloxaf/fzf-tab" # Must be loaded before plugins that wrap widgets (e.g. autosuggestions)
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)" # Zoxide
@@ -65,3 +63,4 @@ command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)" # fnm
 
 # AOC Utils
 source "$ZDOTDIR/aoc-utils.zsh"
+
