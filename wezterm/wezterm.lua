@@ -11,6 +11,7 @@ config.automatically_reload_config = true
 config.macos_window_background_blur = 80
 config.use_fancy_tab_bar = false
 config.font_size = 14
+config.window_decorations = "RESIZE"
 
 -- Disable ligatures
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
