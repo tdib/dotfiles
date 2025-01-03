@@ -1010,29 +1010,53 @@ require("lazy").setup({
       sidebar_filetypes = { NvimTree = true },
       no_name_title = "New Buffer",
 
-      -- Allow movement between buffers using opt-ctrl-h/l
-      vim.keymap.set("n", "<C-M-l>", ":BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" }),
-      vim.keymap.set("i", "<C-M-l>", "<ESC>:BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" }),
-      vim.keymap.set("n", "<C-M-h>", ":BufferPrev<CR>", { noremap = true, silent = true, desc = "Previous buffer" }),
+      -- Close buffers
+      vim.keymap.set("n", "<leader>x", ":BufferClose<CR>", { noremap = true, silent = true, desc = "Close buffer" }),
+
+      -- Allow swapping buffers using opt-ctrl-h/l
+      vim.keymap.set(
+        "n",
+        "<C-M-l>",
+        ":BufferMoveNext<CR>",
+        { noremap = true, silent = true, desc = "Move buffer to next" }
+      ),
+      vim.keymap.set(
+        "i",
+        "<C-M-l>",
+        "<ESC>:BufferMoveNext<CR>",
+        { noremap = true, silent = true, desc = "Move buffer to next" }
+      ),
+      vim.keymap.set(
+        "n",
+        "<C-M-h>",
+        ":BufferMovePrevious<CR>",
+        { noremap = true, silent = true, desc = "Move buffer to previous" }
+      ),
       vim.keymap.set(
         "i",
         "<C-M-h>",
-        "<ESC>:BufferPrev<CR>",
-        { noremap = true, silent = true, desc = "Previous buffer" }
+        "<ESC>:MoveBufferPrevious<CR>",
+        { noremap = true, silent = true, desc = "Move buffer to previous" }
       ),
 
-      vim.keymap.set("n", "<leader>x", ":BufferClose<CR>", { noremap = true, silent = true, desc = "Close buffer" }),
+      -- Allow movement between buffers using opt-h/l
+      vim.keymap.set("n", "<M-l>", ":BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" }),
+      vim.keymap.set("i", "<M-l>", ":BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" }),
+      vim.keymap.set("n", "<M-h>", ":BufferPrev<CR>", { noremap = true, silent = true, desc = "Previous buffer" }),
+      vim.keymap.set("i", "<M-h>", ":BufferPrev<CR>", { noremap = true, silent = true, desc = "Previous buffer" }),
+
+      -- Use keybindings 1-9 to go to tabs 1-9
+      vim.keymap.set("n", "<C-1>", ":BufferGoto 1<CR>", { noremap = true, silent = true, desc = "Go to buffer 1" }),
+      vim.keymap.set("n", "<C-2>", ":BufferGoto 2<CR>", { noremap = true, silent = true, desc = "Go to buffer 2" }),
+      vim.keymap.set("n", "<C-3>", ":BufferGoto 3<CR>", { noremap = true, silent = true, desc = "Go to buffer 3" }),
+      vim.keymap.set("n", "<C-4>", ":BufferGoto 4<CR>", { noremap = true, silent = true, desc = "Go to buffer 4" }),
+      vim.keymap.set("n", "<C-5>", ":BufferGoto 5<CR>", { noremap = true, silent = true, desc = "Go to buffer 5" }),
+      vim.keymap.set("n", "<C-6>", ":BufferGoto 6<CR>", { noremap = true, silent = true, desc = "Go to buffer 6" }),
+      vim.keymap.set("n", "<C-7>", ":BufferGoto 7<CR>", { noremap = true, silent = true, desc = "Go to buffer 7" }),
+      vim.keymap.set("n", "<C-8>", ":BufferGoto 8<CR>", { noremap = true, silent = true, desc = "Go to buffer 8" }),
+      vim.keymap.set("n", "<C-9>", ":BufferGoto 9<CR>", { noremap = true, silent = true, desc = "Go to buffer 9" }),
     },
   },
-  --
-  -- {
-  --   "nanozuki/tabby.nvim",
-  --   -- event = 'VimEnter', -- if you want lazy load, see below
-  --   dependencies = "nvim-tree/nvim-web-devicons",
-  --   config = function()
-  --     -- configs...
-  --   end,
-  -- },
 
   {
     "akinsho/toggleterm.nvim",
@@ -1059,34 +1083,6 @@ require("lazy").setup({
       local ui = require("harpoon.ui")
       vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "Add file to harpoon" })
       vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Harpoon quick menu" })
-
-      vim.keymap.set("n", "<C-1>", function()
-        ui.nav_file(1)
-      end, { desc = "Harpoon file 1" })
-      vim.keymap.set("n", "<C-2>", function()
-        ui.nav_file(2)
-      end, { desc = "Harpoon file 2" })
-      vim.keymap.set("n", "<C-3>", function()
-        ui.nav_file(3)
-      end, { desc = "Harpoon file 3" })
-      vim.keymap.set("n", "<C-4>", function()
-        ui.nav_file(4)
-      end, { desc = "Harpoon file 4" })
-      vim.keymap.set("n", "<C-5>", function()
-        ui.nav_file(5)
-      end, { desc = "Harpoon file 5" })
-      vim.keymap.set("n", "<C-6>", function()
-        ui.nav_file(6)
-      end, { desc = "Harpoon file 6" })
-      vim.keymap.set("n", "<C-7>", function()
-        ui.nav_file(7)
-      end, { desc = "Harpoon file 7" })
-      vim.keymap.set("n", "<C-8>", function()
-        ui.nav_file(8)
-      end, { desc = "Harpoon file 8" })
-      vim.keymap.set("n", "<C-9>", function()
-        ui.nav_file(9)
-      end, { desc = "Harpoon file 9" })
     end,
   },
 
