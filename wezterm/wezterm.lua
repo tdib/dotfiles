@@ -20,10 +20,10 @@ config.keys = {
   {
     key = "Backspace",
     mods = "CMD",
-    -- Send Ctrl+U to clear the line
-    action = wezterm.action.SendString("\x15"),
+    -- Set CMD+Backspace to clear line (using CTRL+U)
+    action = wezterm.action.SendKey({ key = "U", mods = "CTRL" }),
   },
-  -- Map Command+/ to send Ctrl-/
+  -- Map Command+/ to send Ctrl-/, used for commenting in vim
   {
     key = "/",
     mods = "CMD",
