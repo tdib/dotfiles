@@ -7,6 +7,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # Tell login shell where to find config files
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm"
 
 # Set up pyenv
 export PYENV_ROOT="$HOME/.pyenv"

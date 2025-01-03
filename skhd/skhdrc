@@ -7,7 +7,7 @@
 #alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 # Quick apps
-shift + alt - return : open -a "iTerm"
+shift + alt - return : open -a "WezTerm"
 shift + alt - 1 : open -a "Arc"
 shift + alt - 2 : open -a "Discord"
 shift + alt - 3 : open -a "Spotify"
