@@ -49,6 +49,7 @@ alias tree="eza --tree $eza_params"
 alias editrc="nvim $ZDOTDIR/.zshrc"
 alias sourcerc="source $ZDOTDIR/.zshrc"
 alias editprofile="nvim $ZDOTDIR/.zprofile"
+alias df="nvim $ZDOTDIR"
 
 alias python="python3"
 alias vimc="/usr/bin/vim"
