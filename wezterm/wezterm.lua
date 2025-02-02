@@ -18,10 +18,10 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- Allow cmd+backspace to remove entire line
 config.keys = {
+  -- Set CMD+Backspace to clear line (using CTRL+U)
   {
     key = "Backspace",
     mods = "CMD",
-    -- Set CMD+Backspace to clear line (using CTRL+U)
     action = wezterm.action.SendKey({ key = "U", mods = "CTRL" }),
   },
   -- Map Command+/ to send Ctrl-/, used for commenting in vim
@@ -30,6 +30,7 @@ config.keys = {
     mods = "CMD",
     action = wezterm.action.SendKey({ key = "/", mods = "CTRL" }),
   },
+  -- Cmd+Shift+LeftArrow/RightArrow to reorder tabs
   {
     key = "LeftArrow",
     mods = "CMD|SHIFT",
@@ -39,6 +40,35 @@ config.keys = {
     key = "RightArrow",
     mods = "CMD|SHIFT",
     action = wezterm.action.MoveTabRelative(1),
+  },
+  -- Opt+Left and Opt+Right as ALT-b, ALT-f respectively to jump words
+  {
+    key = "LeftArrow",
+    mods = "OPT",
+    action = wezterm.action.SendKey({ key = "b", mods = "ALT" }),
+  },
+  {
+    key = "RightArrow",
+    mods = "OPT",
+    action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
+  },
+  -- Map Option + Backspace to delete the previous word
+  {
+    key = "Backspace",
+    mods = "OPT",
+    action = wezterm.action.SendKey({ key = "w", mods = "CTRL" }),
+  },
+  -- Command + Left to move to the start of the line
+  {
+    key = "LeftArrow",
+    mods = "CMD",
+    action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }),
+  },
+  -- Command + Right to move to the end of the line
+  {
+    key = "RightArrow",
+    mods = "CMD",
+    action = wezterm.action.SendKey({ key = "e", mods = "CTRL" }),
   },
 }
 
