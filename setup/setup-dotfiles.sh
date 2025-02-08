@@ -3,9 +3,11 @@
 set -e  # Exit immediately if a command fails
 
 # Symlink .zprofile to home directory
-echo "Creating symlink for .zprofile..."
+echo "Creating necessary symlinks..."
 ln -sf $HOME/.config/zsh/.zprofile $HOME/.zprofile
 ln -sf $HOME/.config/vim/.vimrc $HOME/.vimrc
+mkdir -p $HOME/.hammerspoon
+ln -sf $HOME/.config/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 
 # Install Homebrew if it's not installed
 if ! command -v brew &> /dev/null; then

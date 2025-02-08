@@ -1,5 +1,6 @@
 cask "nikitabobko/tap/aerospace"
 cask "wezterm"
+cask "hammerspoon"
 
 brew "zsh"
 brew "git"
