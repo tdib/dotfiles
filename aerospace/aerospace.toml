@@ -199,3 +199,9 @@ run = ['layout tiling', 'move-node-to-workspace 2']
 if.app-id = 'com.github.wez.wezterm'
 check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij.ce'
+check-further-callbacks = true
+run = ['layout tiling', 'move-node-to-workspace 1']
+
