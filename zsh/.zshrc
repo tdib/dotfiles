@@ -58,10 +58,5 @@ alias vim="nvim"
 # Terminal prompt
 source "$ZDOTDIR/prompt.zsh"
 
-# Version managers
-command -v pyenv >/dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)" # pyenv
-command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)" # fnm
-
 # AOC Utils
 source "$ZDOTDIR/aoc-utils.zsh"
-
