@@ -11,7 +11,9 @@ local function handleScreenLock(event)
     or event == hs.caffeinate.watcher.systemWillSleep
   then
     -- Store the current mute state
-    wasMuted = hs.audiodevice.defaultOutputDevice():muted()
+    if wasMuted == nil then
+      wasMuted = hs.audiodevice.defaultOutputDevice():muted()
+    end
     -- Mute the audio
     hs.audiodevice.defaultOutputDevice():setMuted(true)
 
@@ -21,6 +23,7 @@ local function handleScreenLock(event)
     -- Restore the previous mute state
     if wasMuted ~= nil then
       hs.audiodevice.defaultOutputDevice():setMuted(wasMuted)
+      wasMuted = nil
     end
   end
 end
