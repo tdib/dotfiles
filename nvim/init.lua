@@ -334,6 +334,8 @@ require("lazy").setup({
         { "<leader>w", group = "[W]orkspace" },
         { "<leader>t", group = "[T]oggle" },
         { "<leader>h", group = "[H]arpoon" },
+        { "<leader>f", group = "[F]uzzy find" },
+        { "<leader>b", group = "[B]uffer" },
       },
     },
   },
@@ -439,15 +441,15 @@ require("lazy").setup({
 
       vim.keymap.set("n", "<leader>ff", function()
         builtin.find_files({ hidden = hidden, no_ignore = no_ignore })
-      end, { desc = "[F]ind [F]iles" })
+      end, { desc = "In [F]iles" })
 
       vim.keymap.set("n", "<leader>fw", function()
         builtin.grep_string({ hidden = hidden, no_ignore = no_ignore })
-      end, { desc = "[F]ind current [W]ord" })
+      end, { desc = "Current [W]ord" })
 
       vim.keymap.set("n", "<leader>fg", function()
         builtin.live_grep({ hidden = hidden, no_ignore = no_ignore })
-      end, { desc = "[F]ind by [G]rep" })
+      end, { desc = "By [G]rep" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>fb", function()
@@ -456,7 +458,7 @@ require("lazy").setup({
           winblend = 10,
           previewer = false,
         }))
-      end, { desc = "Fuzzily [F]ind in current [B]uffer" })
+      end, { desc = "In Current [B]uffer" })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -465,22 +467,22 @@ require("lazy").setup({
           grep_open_files = true,
           prompt_title = "Live Grep in Open Files",
         })
-      end, { desc = "[F]ind in [O]pen Files" })
+      end, { desc = "In [O]pen Files" })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set("n", "<leader>fn", function()
         builtin.find_files({ cwd = vim.fn.stdpath("config"), hidden = hidden, no_ignore = no_ignore })
-      end, { desc = "[F]ind in [N]eovim files" })
+      end, { desc = "In [N]eovim files" })
 
-      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
-      vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[R]esume" })
+      vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = 'Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
+      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[D]iagnostics" })
 
       -- Telescope specific
-      vim.keymap.set("n", "<leader>ftk", builtin.keymaps, { desc = "[F]ind [T]elescope [K]eymaps" })
-      vim.keymap.set("n", "<leader>ftc", builtin.builtin, { desc = "[F]ind [T]elescope [C]ommand" })
-      vim.keymap.set("n", "<leader>fth", builtin.help_tags, { desc = "[F]ind [T]elescope [H]elp" })
+      vim.keymap.set("n", "<leader>ftk", builtin.keymaps, { desc = "[T]elescope [K]eymaps" })
+      vim.keymap.set("n", "<leader>ftc", builtin.builtin, { desc = "[T]elescope [C]ommand" })
+      vim.keymap.set("n", "<leader>fth", builtin.help_tags, { desc = "[T]elescope [H]elp" })
     end,
   },
 
@@ -1042,7 +1044,12 @@ require("lazy").setup({
       no_name_title = "New Buffer",
 
       -- Close buffers
-      vim.keymap.set("n", "<leader>x", ":BufferClose<CR>", { noremap = true, silent = true, desc = "Close buffer" }),
+      vim.keymap.set(
+        "n",
+        "<leader>bx",
+        ":BufferClose<CR>",
+        { noremap = true, silent = true, desc = "[B]uffer E[X]it" }
+      ),
 
       -- Allow swapping buffers using opt-ctrl-h/l
       vim.keymap.set(
