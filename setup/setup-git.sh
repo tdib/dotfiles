@@ -12,6 +12,7 @@ git config --global alias.l "log"
 git config --global alias.cm "commit"
 git config --global alias.cma "commit --amend"
 git config --global alias.cman "commit --amend --no-edit"
+git config --global alias.rb "rebase"
 
 # User Information
 git config --global user.name "Dib"
