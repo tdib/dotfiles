@@ -353,6 +353,7 @@ require("lazy").setup({
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      ---@diagnostic disable-next-line: missing-fields
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         "nvim-telescope/telescope-fzf-native.nvim",
 
@@ -366,9 +367,9 @@ require("lazy").setup({
           return vim.fn.executable("make") == 1
         end,
       },
-      { "nvim-telescope/telescope-ui-select.nvim" },
-
+      "nvim-telescope/telescope-ui-select.nvim",
       -- Useful for getting pretty icons, but requires a Nerd Font.
+      ---@diagnostic disable-next-line: missing-fields
       { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
     config = function()
@@ -505,13 +506,17 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+      ---@diagnostic disable-next-line: missing-fields
+      {
+        "williamboman/mason.nvim",
+        config = true,
+      }, -- NOTE: Must be loaded before dependants
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim", opts = {} },
+      "j-hui/fidget.nvim",
 
       -- Allows extra capabilities provided by nvim-cmp
       "hrsh7th/cmp-nvim-lsp",
@@ -721,6 +726,8 @@ require("lazy").setup({
             require("lspconfig")[server_name].setup(server)
           end,
         },
+        ensure_installed = {},
+        automatic_installation = true,
       })
     end,
   },
@@ -781,6 +788,7 @@ require("lazy").setup({
     event = "InsertEnter",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
+      ---@diagnostic disable-next-line: missing-fields
       {
         "L3MON4D3/LuaSnip",
         build = (function()
@@ -1228,6 +1236,7 @@ require("lazy").setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+  ---@diagnostic disable: missing-fields
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
