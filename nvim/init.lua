@@ -169,13 +169,10 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- Comment line shortcut
-vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "[C]omment line(s)" })
-vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "[C]omment line(s)" })
-vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "[C]omment line(s)" })
+-- There's a bit of jank here to keep the cursor at its current position, namely the use of marks
+vim.keymap.set("i", "<C-/>", "<esc>gcc`^i", { remap = true, desc = "[C]omment line(s)" })
+vim.keymap.set("n", "<C-/>", "mqgcc`q", { remap = true, desc = "[C]omment line(s)" })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "[C]omment line(s)" })
-
--- Allow opt+backspace for removing words in insert mode
-vim.keymap.set("i", "<A-BS>", "<C-W>")
 
 -- Allow shift-tab to unindent in insert mode
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true })
@@ -417,39 +414,73 @@ require("lazy").setup({
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-      vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-      vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-      vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-      vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-      vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+      -- State of whether to show/hide gitignored files in searches
+      local no_ignore = false
+      -- State of whether to show/hide hidden files in searches
+      local hidden = false
+
+      vim.keymap.set("n", "<leader>fi", function()
+        no_ignore = not no_ignore
+        if no_ignore then
+          print("Telescope now showing gitignored files")
+        else
+          print("Telescope now hiding gitignored files")
+        end
+      end, { desc = "Toggle [I]gnored files in search" })
+
+      vim.keymap.set("n", "<leader>fh", function()
+        hidden = not hidden
+        if hidden then
+          print("Telescope now showing hidden files")
+        else
+          print("Telescope now hiding hidden files")
+        end
+      end, { desc = "Toggle [H]idden files in search" })
+
+      vim.keymap.set("n", "<leader>ff", function()
+        builtin.find_files({ hidden = hidden, no_ignore = no_ignore })
+      end, { desc = "[F]ind [F]iles" })
+
+      vim.keymap.set("n", "<leader>fw", function()
+        builtin.grep_string({ hidden = hidden, no_ignore = no_ignore })
+      end, { desc = "[F]ind current [W]ord" })
+
+      vim.keymap.set("n", "<leader>fg", function()
+        builtin.live_grep({ hidden = hidden, no_ignore = no_ignore })
+      end, { desc = "[F]ind by [G]rep" })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set("n", "<leader>sb", function()
+      vim.keymap.set("n", "<leader>fb", function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
           winblend = 10,
           previewer = false,
         }))
-      end, { desc = "Fuzzily [S]earch in current [B]uffer" })
+      end, { desc = "Fuzzily [F]ind in current [B]uffer" })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set("n", "<leader>s/", function()
+      vim.keymap.set("n", "<leader>fo", function()
         builtin.live_grep({
           grep_open_files = true,
           prompt_title = "Live Grep in Open Files",
         })
-      end, { desc = "[S]earch [/] in Open Files" })
+      end, { desc = "[F]ind in [O]pen Files" })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set("n", "<leader>sn", function()
-        builtin.find_files({ cwd = vim.fn.stdpath("config") })
-      end, { desc = "[S]earch [N]eovim files" })
+      vim.keymap.set("n", "<leader>fn", function()
+        builtin.find_files({ cwd = vim.fn.stdpath("config"), hidden = hidden, no_ignore = no_ignore })
+      end, { desc = "[F]ind in [N]eovim files" })
+
+      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
+      vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+      vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
+
+      -- Telescope specific
+      vim.keymap.set("n", "<leader>ftk", builtin.keymaps, { desc = "[F]ind [T]elescope [K]eymaps" })
+      vim.keymap.set("n", "<leader>ftc", builtin.builtin, { desc = "[F]ind [T]elescope [C]ommand" })
+      vim.keymap.set("n", "<leader>fth", builtin.help_tags, { desc = "[F]ind [T]elescope [H]elp" })
     end,
   },
 
@@ -698,12 +729,12 @@ require("lazy").setup({
     cmd = { "ConformInfo" },
     keys = {
       {
-        "<leader>f",
+        "<leader>bf",
         function()
           require("conform").format({ async = true, lsp_format = "fallback" })
         end,
         mode = "",
-        desc = "[F]ormat buffer",
+        desc = "[B]uffer [F]ormat",
       },
     },
     opts = {
@@ -990,7 +1021,7 @@ require("lazy").setup({
       -- Global mappings outside of on_attach:
       vim.keymap.set("n", "\\", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
       vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
-      vim.keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>", { desc = "Find current buffer in file tree" })
+      vim.keymap.set("n", "<leader>bt", ":NvimTreeFindFile<CR>", { desc = "Find current [B]uffer in file [T]ree" })
     end,
   },
 
