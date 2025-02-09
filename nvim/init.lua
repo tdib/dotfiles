@@ -336,7 +336,7 @@ require("lazy").setup({
         { "<leader>s", group = "[S]earch" },
         { "<leader>w", group = "[W]orkspace" },
         { "<leader>t", group = "[T]oggle" },
-        { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+        { "<leader>h", group = "[H]arpoon" },
       },
     },
   },
@@ -1079,11 +1079,89 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      local mark = require("harpoon.mark")
-      local ui = require("harpoon.ui")
-      vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "Add file to harpoon" })
-      vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Harpoon quick menu" })
+      local harpoon = require("harpoon")
+      harpoon:setup()
     end,
+    keys = {
+      {
+        "<leader>ha",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "Add file to Harpoon",
+      },
+      {
+        "<leader>hh",
+        function()
+          local harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = "Toggle Harpoon menu",
+      },
+      {
+        "<leader>h1",
+        function()
+          require("harpoon"):list():select(1)
+        end,
+        desc = "Go to Harpoon file 1",
+      },
+      {
+        "<leader>h2",
+        function()
+          require("harpoon"):list():select(2)
+        end,
+        desc = "Go to Harpoon file 2",
+      },
+      {
+        "<leader>h3",
+        function()
+          require("harpoon"):list():select(3)
+        end,
+        desc = "Go to Harpoon file 3",
+      },
+      {
+        "<leader>h4",
+        function()
+          require("harpoon"):list():select(4)
+        end,
+        desc = "Go to Harpoon file 4",
+      },
+      {
+        "<leader>h5",
+        function()
+          require("harpoon"):list():select(5)
+        end,
+        desc = "Go to Harpoon file 5",
+      },
+      {
+        "<leader>h6",
+        function()
+          require("harpoon"):list():select(6)
+        end,
+        desc = "Go to Harpoon file 6",
+      },
+      {
+        "<leader>h7",
+        function()
+          require("harpoon"):list():select(7)
+        end,
+        desc = "Go to Harpoon file 7",
+      },
+      {
+        "<leader>h8",
+        function()
+          require("harpoon"):list():select(8)
+        end,
+        desc = "Go to Harpoon file 8",
+      },
+      {
+        "<leader>h9",
+        function()
+          require("harpoon"):list():select(9)
+        end,
+        desc = "Go to Harpoon file 9",
+      },
+    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
