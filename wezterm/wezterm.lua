@@ -10,7 +10,7 @@ config.window_background_opacity = 0.8
 config.automatically_reload_config = true
 config.macos_window_background_blur = 80
 config.use_fancy_tab_bar = false
-config.font_size = 14
+config.font_size = 22
 config.window_decorations = "RESIZE"
 
 -- Disable ligatures
