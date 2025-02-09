@@ -990,7 +990,7 @@ require("lazy").setup({
       -- Global mappings outside of on_attach:
       vim.keymap.set("n", "\\", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
       vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
-      vim.keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>", { desc = "Find file in file tree" })
+      vim.keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>", { desc = "Find current buffer in file tree" })
     end,
   },
 
