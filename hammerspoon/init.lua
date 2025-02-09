@@ -16,10 +16,7 @@ local function handleScreenLock(event)
     end
     -- Mute the audio
     hs.audiodevice.defaultOutputDevice():setMuted(true)
-
-    hs.caffeinate.set("displayIdle", false, true)
   elseif event == hs.caffeinate.watcher.screensDidUnlock then
-    hs.caffeinate.set("displayIdle", false, false)
     -- Restore the previous mute state
     if wasMuted ~= nil then
       hs.audiodevice.defaultOutputDevice():setMuted(wasMuted)
