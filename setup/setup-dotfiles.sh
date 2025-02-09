@@ -25,6 +25,10 @@ else
   brew bundle --file=$HOME/.config/setup/Brewfile
 fi
 
+# Configure Git
+echo "Configuring Git..."
+source $HOME/.config/setup/setup-git.sh || echo "Failed to configure Git"
+
 # Verify Homebrew installation health
 echo "Verifying Homebrew setup..."
 brew doctor || echo "Some issues detected. Check brew doctor output."

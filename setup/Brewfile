@@ -3,6 +3,7 @@ cask "wezterm"
 cask "hammerspoon"
 
 brew "zsh"
+brew "git-delta"
 brew "git"
 brew "fnm"
 brew "eza"
