@@ -4,7 +4,8 @@ autoload -Uz compinit
 compinit -C -d "$ZDOTDIR/.zcompdump"
 
 # Initialise Zap plugin manager
-[ -f "$XDG_DATA_HOME/zap/zap.zsh" ] && source "$XDG_DATA_HOME/zap/zap.zsh"
+[ -f "$XDG_DATA_HOME/zap/zap.zsh" ] || zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+source "$XDG_DATA_HOME/zap/zap.zsh"
 
 # Load plugins
 plug "Aloxaf/fzf-tab" # Must be loaded before plugins that wrap widgets (e.g. autosuggestions)
