@@ -47,10 +47,10 @@ alias ll="eza --all --long --header $eza_params"
 alias lt="eza --tree $eza_params"
 alias tree="eza --tree $eza_params"
 
-alias editrc="nvim $ZDOTDIR/"
+alias editrc="nvim $ZDOTDIR/.zshrc"
 alias sourcerc="source $ZDOTDIR/.zshrc"
-alias editprofile="nvim $ZDOTDIR/.zprofile"
-alias df="nvim $ZDOTDIR"
+alias df="nvim $DOTFILES" # Edit dotfiles
+alias cddf="cd $DOTFILES" # Change dir to dotfiles
 
 alias python="python3"
 alias vimc="/usr/bin/vim"
