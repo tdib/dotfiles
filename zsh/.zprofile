@@ -10,6 +10,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm"
 
+# Set up git aliases
+$XDG_CONFIG_HOME/setup/setup-git.sh
+
 # Set up pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
