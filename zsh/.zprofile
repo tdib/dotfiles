@@ -13,15 +13,6 @@ export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm"
 # Set up git aliases
 $XDG_CONFIG_HOME/setup/setup-git.sh
 
-# Set up pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-# Version managers
-command -v pyenv >/dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)" # pyenv
-command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)" # fnm
-command -v rbenv >/dev/null && eval "$(rbenv init - --no-rehash zsh)" # rbenv
-
 # Android
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH" # Provide access to `adb` and other terminal commands
 export PATH="/Applications/Android Studio.app/Contents/MacOS:$PATH" # Allow access to `studio` terminal command

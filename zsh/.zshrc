@@ -16,6 +16,9 @@ plug "zsh-users/zsh-syntax-highlighting"
 eval "$(zoxide init --cmd cd zsh)" # Zoxide
 source <(fzf --zsh) # Fuzzy finder (fzf)
 
+# Mise
+eval "$(mise activate zsh)"
+
 # Keybindings
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
