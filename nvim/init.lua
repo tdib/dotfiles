@@ -420,7 +420,7 @@ require("lazy").setup({
       -- State of whether to show/hide gitignored files in searches
       local no_ignore = false
       -- State of whether to show/hide hidden files in searches
-      local hidden = false
+      local hidden = true
 
       vim.keymap.set("n", "<leader>fi", function()
         no_ignore = not no_ignore
