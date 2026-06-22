@@ -449,7 +449,14 @@ require("lazy").setup({
       end, { desc = "Current [W]ord" })
 
       vim.keymap.set("n", "<leader>fg", function()
-        builtin.live_grep({ hidden = hidden, no_ignore = no_ignore })
+        local args = {}
+        if hidden then
+          table.insert(args, "--hidden")
+        end
+        if no_ignore then
+          table.insert(args, "--no-ignore")
+        end
+        builtin.live_grep({ additional_args = args })
       end, { desc = "By [G]rep" })
 
       -- Slightly advanced example of overriding default behavior and theme
