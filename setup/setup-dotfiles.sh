@@ -5,6 +5,8 @@ set -e  # Exit immediately if a command fails
 # Symlink .zprofile to home directory
 echo "Creating necessary symlinks..."
 ln -sf $HOME/.config/zsh/.zprofile $HOME/.zprofile
+ln -sf $HOME/.config/zsh/.zshenv $HOME/.zshenv
+ln -sf $HOME/.config/zsh/.zshrc $HOME/.zshrc
 ln -sf $HOME/.config/vim/.vimrc $HOME/.vimrc
 mkdir -p $HOME/.hammerspoon
 ln -sf $HOME/.config/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
