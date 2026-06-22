@@ -16,6 +16,18 @@ config.window_frame = {
   font_size = 18.0,
 }
 
+-- Dynamically rename tab titles that have nvim open
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  local pane = tab.active_pane
+  local process = pane.foreground_process_name:match("([^/]+)$") or ""
+  local cwd = pane.current_working_dir and pane.current_working_dir.file_path or ""
+  local dir = cwd:match("([^/]+)$") or ""
+
+  if process == "nvim" and dir ~= "" then
+    return "nvim (" .. dir .. ")"
+  end
+end)
+
 -- Disable ligatures
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
