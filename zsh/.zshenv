@@ -21,3 +21,5 @@ export PATH="/Applications/Android Studio.app/Contents/MacOS:$PATH" # Allow acce
 # Other
 export PATH="$HOME/Library/pnpm:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
