@@ -8,7 +8,7 @@ export DOTFILES="$XDG_CONFIG_HOME"
 # Tell login shell where to find config files
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
-export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm"
+export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm/wezterm.lua"
 
 # Set up git aliases
 $XDG_CONFIG_HOME/setup/setup-git.sh
