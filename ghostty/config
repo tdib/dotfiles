@@ -1,0 +1,52 @@
+
+cursor-style = block
+background = #000000
+background-opacity = 0.8
+background-blur = true
+foreground = #f7f8ff
+cursor-color = #ffd84d
+selection-background = #4b5578
+selection-foreground = #ffffff
+
+font-family = JetBrains Mono
+font-style = Medium
+font-style-bold = ExtraBold
+font-size = 21
+
+# ANSI Normal Colors
+# Black
+palette = 0=#0b0e17
+# Red
+palette = 1=#f54973
+# Green
+palette = 2=#1fdd67
+# Yellow
+palette = 3=#f6d356
+# Blue
+palette = 4=#316bf7
+# Magenta
+palette = 5=#d064f7
+# Cyan
+palette = 6=#2ddef4
+# White
+palette = 7=#eef2ff
+
+# ANSI Bright Colors
+# Bright Black / Gray
+palette = 8=#717a99
+# Bright Red
+palette = 9=#f87695
+# Bright Green
+palette = 10=#68ef9b
+# Bright Yellow
+palette = 11=#f8e174
+# Bright Blue
+palette = 12=#78aaf7
+# Bright Magenta
+palette = 13=#e490f9
+# Bright Cyan
+palette = 14=#76edf8
+# Bright White
+palette = 15=#ffffff
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
