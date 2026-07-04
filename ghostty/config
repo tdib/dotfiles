@@ -50,3 +50,6 @@ palette = 14=#76edf8
 palette = 15=#ffffff
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = opt+backspace=text:\x1b\x7f
+
+macos-icon = xray
