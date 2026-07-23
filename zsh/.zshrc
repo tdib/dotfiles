@@ -53,6 +53,7 @@ alias tree="eza --tree $eza_params"
 
 alias editrc="nvim $ZDOTDIR/.zshrc"
 alias sourcerc="source $ZDOTDIR/.zshrc"
+alias src="source $ZDOTDIR/.zshrc"
 alias df="nvim $DOTFILES" # Edit dotfiles
 alias cddf="cd $DOTFILES" # Change dir to dotfiles
 
