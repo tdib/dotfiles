@@ -4,6 +4,12 @@ bindkey -e
 autoload -Uz compinit
 compinit -C -d "$ZDOTDIR/.zcompdump"
 
+# Edit command in vim
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+export EDITOR="nvim"
+
 # Initialise Zap plugin manager
 [ -f "$XDG_DATA_HOME/zap/zap.zsh" ] || zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
 source "$XDG_DATA_HOME/zap/zap.zsh"
